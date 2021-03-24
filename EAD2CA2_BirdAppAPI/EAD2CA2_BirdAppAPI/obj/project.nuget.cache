@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "VtzpnY/chlmHdCJAk8Elske/3cWqEPt5S3aMs9Jk0zHF+usxbD7BxVWRPrROmoJ2p0Ye22gIN7o8Rmi+7wNaZA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\mateu\\Documents\\College\\EAD2\\CA2\\EAD2CA2_BirdsAPP\\EAD2CA2_BirdAppAPI\\EAD2CA2_BirdAppAPI\\EAD2CA2_BirdAppAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mateu\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
