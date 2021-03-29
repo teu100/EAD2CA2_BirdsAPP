@@ -139,7 +139,7 @@ namespace EAD2CA2_BirdAppAPI.Controllers
         //X00149830 JF
         [Route("likedBirds")]
         [HttpGet]
-        public ActionResult<string> GetLiked()
+        public ActionResult<string> GetLikedBirds()
         {
 
             try
@@ -154,6 +154,44 @@ namespace EAD2CA2_BirdAppAPI.Controllers
             }
         }
 
+        //X00149830 JF
+        [Route("likeUnlike")]
+        [HttpPut]
+        public ActionResult<string> PutLikedUnliked(int? id)
+        {
+            {
+                try
+                {
+                    var birdToLikeUnlike = _dbContext.Birds.FirstOrDefault(b => b.id == id);
+                    if (birdToLikeUnlike == null)
+                    {
+                        return NotFound("Bird not found");
+                    }
+                    
+                    // changing liked to 1 makes it true 
+                    if(birdToLikeUnlike.liked == 0)
+                    {
+                        birdToLikeUnlike.liked = 1;
+                        _dbContext.SaveChanges();
+                        return Ok("bird was liked");
+                    }
+                    else
+                    {
+                        birdToLikeUnlike.liked = 0;
+                        _dbContext.SaveChanges();
+                        return Ok("bird was unliked");
+                    }
+
+                  
+                }
+                catch (Exception)
+                {
+                    return StatusCode(500, "Failed to Like/Unlike a bird");
+                }
+            }
+
+        }
+ 
 
 
     }
