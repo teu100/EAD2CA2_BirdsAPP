@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Irish BIrd App</string>
+
+    <!--First Fragment-->
+    <string name="first_fragment_label">Birds</string>
+    <string name="randomBird">Random Bird</string>
+    <string name="welcomeText"> Welcome to the Irish Bird App </string>
+    <string name="discoverText"> Discover a New Bird </string>
 </resources>
