@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/EAD2CA2BirdAppAPIapi/apis/EAD2CA2BirdAppAPI",
+      "type": "apis.azure"
+    }
+  }
+}

@@ -6098,11 +6098,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+      "projectUniqueName": "C:\\Users\\flemi\\source\\repos\\EAD2CA2_BirdsAPP\\EAD2CA2_BirdAppAPI\\EAD2CA2_BirdAppAPI\\EAD2CA2_BirdAppAPI.csproj",
+      "projectName": "EAD2CA2_BirdAppAPI",
+      "projectPath": "C:\\Users\\flemi\\source\\repos\\EAD2CA2_BirdsAPP\\EAD2CA2_BirdAppAPI\\EAD2CA2_BirdAppAPI\\EAD2CA2_BirdAppAPI.csproj",
+      "packagesPath": "C:\\Users\\flemi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\flemi\\source\\repos\\EAD2CA2_BirdsAPP\\EAD2CA2_BirdAppAPI\\EAD2CA2_BirdAppAPI\\obj\\",
+=======
       "projectUniqueName": "C:\\Users\\mateu\\Documents\\College\\EAD2\\EAD2CA2_BirdsAPP\\EAD2CA2_BirdAppAPI\\EAD2CA2_BirdAppAPI\\EAD2CA2_BirdAppAPI.csproj",
       "projectName": "EAD2CA2_BirdAppAPI",
       "projectPath": "C:\\Users\\mateu\\Documents\\College\\EAD2\\EAD2CA2_BirdsAPP\\EAD2CA2_BirdAppAPI\\EAD2CA2_BirdAppAPI\\EAD2CA2_BirdAppAPI.csproj",
       "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\mateu\\Documents\\College\\EAD2\\EAD2CA2_BirdsAPP\\EAD2CA2_BirdAppAPI\\EAD2CA2_BirdAppAPI\\obj\\",
+>>>>>>> 854d75470370e610004a979dae7dc685744fde5c
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",

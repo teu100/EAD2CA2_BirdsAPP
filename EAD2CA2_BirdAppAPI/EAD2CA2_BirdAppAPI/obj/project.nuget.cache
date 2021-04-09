@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
+  "dgSpecHash": "l2BSjvqa1lMjq7n8mc/hqThJQlAwDmo9foimbPH9UfVRuE5zIadI8+Mx2ZNFMWB2zPsYrpichjLCi6UHCOqXEw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\flemi\\source\\repos\\EAD2CA2_BirdsAPP\\EAD2CA2_BirdAppAPI\\EAD2CA2_BirdAppAPI\\EAD2CA2_BirdAppAPI.csproj",
+=======
   "dgSpecHash": "81uJOnjMT3sAHaMduY9sJDsDHZoaeyeXMCylXF+cJBXfGoAGSywlCK4Hhxj8gcN3/rJa42l9Dcqyhh+aiATrkw==",
   "success": true,
   "projectFilePath": "C:\\Users\\mateu\\Documents\\College\\EAD2\\EAD2CA2_BirdsAPP\\EAD2CA2_BirdAppAPI\\EAD2CA2_BirdAppAPI\\EAD2CA2_BirdAppAPI.csproj",
+>>>>>>> 854d75470370e610004a979dae7dc685744fde5c
   "expectedPackageFiles": [
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
