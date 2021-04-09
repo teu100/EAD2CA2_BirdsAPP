@@ -1,8 +1,10 @@
 package com.example.irishbirdapp;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -34,12 +36,18 @@ public class SecondFragment extends AppCompatActivity {
         //TextView infoLink = (TextView) findViewById(R.id.info);
         //TextView commonName = (TextView) findViewById(R.id.CommonName);
 
-
         commonName.setText(bird.getCommonName());
         binomial.setText(bird.getBinomial());
         irishName.setText(bird.getIrishName());
         orderName.setText(bird.getOrderName());
         familyName.setText(bird.getFamilyName());
+
+
+        ImageView birdImage = (ImageView) findViewById(R.id.birdImageFS);
+        Drawable drawable;
+        drawable = getResources().getDrawable(R.drawable.tryout);
+        birdImage.setImageDrawable(drawable);
+
 
     }
 }

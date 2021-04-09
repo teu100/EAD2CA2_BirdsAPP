@@ -53,5 +53,9 @@ public class Bird  implements Serializable {
         return imageLink;
     }
 
+    public void setImageLink(String imgLink){
+        this.imageLink = imgLink;
+    }
+
 
 }
