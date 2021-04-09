@@ -1,6 +1,8 @@
 package com.example.irishbirdapp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +11,8 @@ import android.widget.TextView;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.bumptech.glide.Glide;
 
 
 public class SecondFragment extends AppCompatActivity {
@@ -35,8 +39,8 @@ public class SecondFragment extends AppCompatActivity {
         TextView familyName = (TextView) findViewById(R.id.familyNameFS);
         //TextView infoLink = (TextView) findViewById(R.id.info);
         //TextView commonName = (TextView) findViewById(R.id.CommonName);
-
-        commonName.setText(bird.getCommonName());
+        String birdName = bird.getCommonName().replace(" ", "");
+        commonName.setText(birdName);
         binomial.setText(bird.getBinomial());
         irishName.setText(bird.getIrishName());
         orderName.setText(bird.getOrderName());
@@ -44,9 +48,20 @@ public class SecondFragment extends AppCompatActivity {
 
 
         ImageView birdImage = (ImageView) findViewById(R.id.birdImageFS);
+        /*
         Drawable drawable;
         drawable = getResources().getDrawable(R.drawable.tryout);
         birdImage.setImageDrawable(drawable);
+
+        ImageView glideTry = findViewById(R.id.birdImageFS);
+        String path = "C:/Users/mateu/Documents/College/EAD2/EAD2CA2_BirdsAPP/IrishBirdApp/app/src/main/res/drawable/tryout";
+        Glide.with(this)
+                .load("path")
+                .into(glideTry);
+*/
+
+        birdImage.setImageBitmap(BitmapFactory.decodeFile("/storage/emulated/0/Download/"+birdName+".jpg"));
+
 
 
     }

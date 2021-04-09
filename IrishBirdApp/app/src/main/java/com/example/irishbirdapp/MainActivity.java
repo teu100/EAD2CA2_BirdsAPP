@@ -82,9 +82,9 @@ public class MainActivity extends AppCompatActivity {
                                 Bird[] birds1 = new Gson().fromJson(response, Bird[].class);
                                 Random randomGen = new Random();
                                 int randomNumber = randomGen.nextInt(19);
-                                outputBirds.setText(birds1[0].toString());
-                                Log.d(TAG, "Displaying data : " + birds1[0].toString());
-                                birdInfo(birds1[0]);
+                                outputBirds.setText(birds1[randomNumber].toString());
+                                Log.d(TAG, "Displaying data : " + birds1[randomNumber].toString());
+                                birdInfo(birds1[randomNumber]);
                             }
                         },
                         new Response.ErrorListener()
