@@ -1,6 +1,8 @@
 package com.example.irishbirdapp;
 
-public class Bird {
+import java.io.Serializable;
+
+public class Bird  implements Serializable {
 
     //public Bird commonName;
     private String commonName;
@@ -21,6 +23,34 @@ public class Bird {
                 "Info Link: "+this.infoLink+"\n"
                 ;
         return Bird;
+    }
+
+    public String getCommonName(){
+        return commonName;
+    }
+
+    public String getBinomial(){
+        return binomial;
+    }
+
+    public String getIrishName(){
+        return irishName;
+    }
+
+    public String getOrderName(){
+        return orderName;
+    }
+
+    public String getFamilyName(){
+        return familyName;
+    }
+
+    public String getInfoLink(){
+        return infoLink;
+    }
+
+    public String getImageLink(){
+        return imageLink;
     }
 
 

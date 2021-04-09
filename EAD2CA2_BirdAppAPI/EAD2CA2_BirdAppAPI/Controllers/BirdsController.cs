@@ -122,7 +122,7 @@ namespace EAD2CA2_BirdAppAPI.Controllers
             try
             {
                 int tableRows = _dbContext.Birds.Count();
-                int randID = _random.Next(tableRows+1);
+                int randID = _random.Next(tableRows);
 
                 var randomBirdToGet = _dbContext.Birds.Where(b => b.id == randID);
 
