@@ -159,7 +159,7 @@ namespace EAD2CA2_BirdAppAPI.Controllers
         [HttpPut]
         public ActionResult<string> PutLikedUnliked(int? id)
         {
-            {
+            
                 try
                 {
                     var birdToLikeUnlike = _dbContext.Birds.FirstOrDefault(b => b.id == id);
@@ -188,10 +188,32 @@ namespace EAD2CA2_BirdAppAPI.Controllers
                 {
                     return StatusCode(500, "Failed to Like/Unlike a bird");
                 }
-            }
+            
 
         }
- 
+
+        //X00149830 JF
+        [Route("search")]
+        [HttpGet]
+        public ActionResult<string> Search(string searchTerm)
+        {
+            try
+            {
+                var searchedForBird = _dbContext.Birds.FirstOrDefault(s => s.commonName.Contains(searchTerm));
+
+                if (searchedForBird == null)
+                {
+                    return NotFound(searchTerm + " not found");
+                }
+
+                return Ok(searchedForBird);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Could not find a bird called " + searchTerm);
+            }
+        }
+
 
 
     }
