@@ -6,4 +6,10 @@
     <string name="randomBird">Random Bird</string>
     <string name="welcomeText"> Welcome to the Irish Bird App </string>
     <string name="discoverText"> Discover a New Bird </string>
+    <string name="commonName">Common Name: </string>
+    <string name="binomial">Binomial: </string>
+    <string name="irishName">Irish Name: </string>
+    <string name="orderName">Order : </string>
+    <string name="familyName">Family: </string>
+    <string name="imgDescription">Picture of a bird</string>
 </resources>

@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void displayMessage(View view) {
-        Log.d(TAG, "Random button has beeen cliked");
+        Log.d(TAG, "Random button has been clicked");
         //Snackbar.make
     }
 
