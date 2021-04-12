@@ -212,6 +212,33 @@
           }
         }
       }
+    },
+    "/api/Birds/search": {
+      "get": {
+        "tags": [
+          "Birds"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "searchTerm",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
