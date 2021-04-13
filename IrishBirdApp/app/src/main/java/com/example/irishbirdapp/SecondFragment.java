@@ -32,11 +32,11 @@ public class SecondFragment extends AppCompatActivity {
         setContentView(R.layout.fragment_second);
 
         // display data read from intent on a text view
-        TextView commonName = (TextView) findViewById(R.id.CommonNameFS);
-        TextView binomial = (TextView) findViewById(R.id.binomialFS);
-        TextView irishName = (TextView) findViewById(R.id.irishNameFS);
-        TextView orderName = (TextView) findViewById(R.id.orderNameFS);
-        TextView familyName = (TextView) findViewById(R.id.familyNameFS);
+        TextView commonName = findViewById(R.id.CommonNameFS);
+        TextView binomial = findViewById(R.id.binomialFS);
+        TextView irishName = findViewById(R.id.irishNameFS);
+        TextView orderName = findViewById(R.id.orderNameFS);
+        TextView familyName = findViewById(R.id.familyNameFS);
         //TextView infoLink = (TextView) findViewById(R.id.info);
         //TextView commonName = (TextView) findViewById(R.id.CommonName);
         String birdName = bird.getCommonName().replace(" ", "");
@@ -47,7 +47,7 @@ public class SecondFragment extends AppCompatActivity {
         familyName.setText(bird.getFamilyName());
 
 
-        ImageView birdImage = (ImageView) findViewById(R.id.birdImageFS);
+        ImageView birdImage = findViewById(R.id.birdImageFS);
         /*
         Drawable drawable;
         drawable = getResources().getDrawable(R.drawable.tryout);
@@ -60,7 +60,7 @@ public class SecondFragment extends AppCompatActivity {
                 .into(glideTry);
 */
 
-        birdImage.setImageBitmap(BitmapFactory.decodeFile("/storage/emulated/0/Download/"+birdName+".jpg"));
+        birdImage.setImageBitmap(BitmapFactory.decodeFile(bird.getImageLink()));
 
 
 
