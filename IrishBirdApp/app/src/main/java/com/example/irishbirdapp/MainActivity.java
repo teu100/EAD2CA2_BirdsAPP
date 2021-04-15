@@ -2,11 +2,17 @@ package com.example.irishbirdapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.MenuInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 
@@ -21,6 +27,8 @@ import android.view.View;
 
 import android.widget.TextView;
 import android.util.Log;
+import android.widget.Toast;
+
 import com.google.gson.*;
 import com.android.volley.*;
 import com.android.volley.toolbox.*;
@@ -28,6 +36,7 @@ import com.android.volley.toolbox.*;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,18 +45,31 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Irish Bird App";
     public final static Bird REVIEW_MESSAGE=  new Bird();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
     }
 
 
 
+
+    private void doMySearch(String query) {
+        SearchView searchView = findViewById(R.id.searchView3);
+        String input = (String) searchView.getQuery();
+        Log.d("Search input ", input);
+
+    }
+
+
     public void displayMessage(View view) {
-        Log.d(TAG, "Random button has been clicked");
-        //Snackbar.make
+        SearchView searchView = findViewById(R.id.searchView3);
+        String input = (String) searchView.getQuery();
+        Log.d("Search input ", input);
     }
 
     public void birdInfo(Bird bird){

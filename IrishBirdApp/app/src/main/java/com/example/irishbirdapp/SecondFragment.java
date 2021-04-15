@@ -40,7 +40,7 @@ public class SecondFragment extends AppCompatActivity {
         //TextView infoLink = (TextView) findViewById(R.id.info);
         //TextView commonName = (TextView) findViewById(R.id.CommonName);
         String birdName = bird.getCommonName().replace(" ", "");
-        commonName.setText(birdName);
+        commonName.setText(bird.getCommonName());
         binomial.setText(bird.getBinomial());
         irishName.setText(bird.getIrishName());
         orderName.setText(bird.getOrderName());
@@ -60,7 +60,7 @@ public class SecondFragment extends AppCompatActivity {
                 .into(glideTry);
 */
 
-        birdImage.setImageBitmap(BitmapFactory.decodeFile(bird.getImageLink()));
+        birdImage.setImageBitmap(BitmapFactory.decodeFile("/storage/emulated/0/Download/"+birdName+".jpg"));
 
 
 

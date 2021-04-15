@@ -12,10 +12,11 @@
         android:layout_height="69dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:text="Random Bird"
+        android:layout_marginBottom="233dp"
         android:onClick="callService"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="429dp" />
+        android:text="Random Bird"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 
@@ -38,5 +39,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RandomBirdButton"
         app:layout_constraintVertical_bias="0.0" />
+
+    <SearchView
+        android:id="@+id/searchView3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="550dp"
+        android:onClick="callService"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </SearchView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
