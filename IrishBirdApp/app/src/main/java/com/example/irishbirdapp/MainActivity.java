@@ -11,6 +11,8 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -32,8 +34,10 @@ import android.widget.Toast;
 import com.google.gson.*;
 import com.android.volley.*;
 import com.android.volley.toolbox.*;
+import com.example.irishbirdapp.*;
 
 
+import org.json.JSONArray;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -41,23 +45,80 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String SERVICE_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds";          // or https
+    private String RANDOM_BIRD_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds/randomBird";
+    private String SEARCH_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds/search?searchTerm=";
     private static final String TAG = "Irish Bird App";
     public final static Bird REVIEW_MESSAGE=  new Bird();
+    Button searchButton;
+    EditText searchText;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        searchButton = (Button)findViewById(R.id.searchButton);
 
+    }
 
+    public void searchForABird(View view)
+    {
+        final TextView outputBirds = (TextView) findViewById(R.id.outputTextView);
+                searchText = (EditText)findViewById(R.id.searchTextBox);
+                String searchTerm = searchText.getText().toString();
+                String searchUrl = SEARCH_URI+searchTerm;
+
+                try{
+                    //making a string request
+                    RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+                    Log.d(TAG, "Making request");
+                    Log.d(TAG, searchTerm);
+                    Log.d(TAG, searchUrl);
+                    try{
+                        StringRequest strObjRequest = new StringRequest(Request.Method.GET, searchUrl,
+                                new Response.Listener<String>()
+                                {
+                                    @Override
+                                    public void onResponse(String response)
+                                    {
+                                        Gson gson = new Gson();
+                                        Bird bird = gson.fromJson(response, Bird.class);
+                                        birdInfo(bird);
+
+                                        Log.d(TAG, searchUrl);
+                                    }
+                                },
+                                new Response.ErrorListener()
+                                {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error)
+                                    {
+
+                                    }
+                                });
+                        queue.add(strObjRequest);
+                    }
+                    catch(Exception e1) {
+                        Log.d(TAG, e1.toString());
+
+                    }
+                }
+                catch (Exception e2) {
+                    Log.d(TAG, e2.toString());
+
+                }
 
     }
 
 
 
 
+
+
+
+
+
+/*
     private void doMySearch(String query) {
         SearchView searchView = findViewById(R.id.searchView3);
         String input = (String) searchView.getQuery();
@@ -71,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         String input = (String) searchView.getQuery();
         Log.d("Search input ", input);
     }
-
+*/
     public void birdInfo(Bird bird){
         //REVIEW_MESSAGE = bird;
         String[] reviewMessage = new String[7];
@@ -84,29 +145,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     public void callService(View view){
 
-        //getting a textView to display the result
         final TextView outputBirds = (TextView) findViewById(R.id.outputTextView);
-
         try{
             //making a string request
             RequestQueue queue = Volley.newRequestQueue(this);
             Log.d(TAG, "Making request");
             try{
-                StringRequest strObjRequest = new StringRequest(Request.Method.GET, SERVICE_URI,
+                StringRequest strObjRequest = new StringRequest(Request.Method.GET, RANDOM_BIRD_URI,
                         new Response.Listener<String>()
                         {
                             @Override
                             public void onResponse(String response)
                             {
-                                // parse resulting string containing JSON to Greeting object
-                                Bird[] birds1 = new Gson().fromJson(response, Bird[].class);
-                                Random randomGen = new Random();
-                                int randomNumber = randomGen.nextInt(19);
-                                outputBirds.setText(birds1[randomNumber].toString());
-                                Log.d(TAG, "Displaying data : " + birds1[randomNumber].toString());
-                                birdInfo(birds1[randomNumber]);
+                                Gson gson = new Gson();
+                                Bird[] bird = gson.fromJson(response, Bird[].class);
+                                birdInfo(bird[0]);
+                                Log.d(TAG, bird[0].getBinomial());
                             }
                         },
                         new Response.ErrorListener()
@@ -114,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError error)
                             {
-                                outputBirds.setText(error.toString());
+
                                 Log.d(TAG, "Error" + error.toString());
                             }
                         });
@@ -122,12 +179,12 @@ public class MainActivity extends AppCompatActivity {
             }
             catch(Exception e1) {
                 Log.d(TAG, e1.toString());
-                outputBirds.setText(e1.toString());
+
             }
         }
         catch (Exception e2) {
             Log.d(TAG, e2.toString());
-            outputBirds.setText(e2.toString());
+
         }
     }
 }

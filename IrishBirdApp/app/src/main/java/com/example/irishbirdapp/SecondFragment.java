@@ -48,19 +48,20 @@ public class SecondFragment extends AppCompatActivity {
 
 
         ImageView birdImage = findViewById(R.id.birdImageFS);
-        /*
+   /*
         Drawable drawable;
         drawable = getResources().getDrawable(R.drawable.tryout);
         birdImage.setImageDrawable(drawable);
 
         ImageView glideTry = findViewById(R.id.birdImageFS);
-        String path = "C:/Users/mateu/Documents/College/EAD2/EAD2CA2_BirdsAPP/IrishBirdApp/app/src/main/res/drawable/tryout";
+        String path = "https://www.flickr.com/photos/152270123@N05/51117646103/";
+        Log.d(TAG,path);
         Glide.with(this)
                 .load("path")
                 .into(glideTry);
 */
 
-        birdImage.setImageBitmap(BitmapFactory.decodeFile("/storage/emulated/0/Download/"+birdName+".jpg"));
+        birdImage.setImageBitmap(BitmapFactory.decodeFile("https://www.flickr.com/photos/152270123@N05/51117646103/"));
 
 
 

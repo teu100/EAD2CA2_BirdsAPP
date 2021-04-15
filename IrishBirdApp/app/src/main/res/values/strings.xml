@@ -12,5 +12,7 @@
     <string name="orderName">Order : </string>
     <string name="familyName">Family: </string>
     <string name="imgDescription">Picture of a bird</string>
-    <string name="RandomBirdButton">Search for Random Bird</string>
+    <string name="searchInitialText">Search .....</string>
+    <string name="searchButtonLabel">Search</string>
+
 </resources>

@@ -2,7 +2,7 @@ package com.example.irishbirdapp;
 
 import java.io.Serializable;
 
-public class Bird  implements Serializable {
+public class Bird implements Serializable {
 
     //public Bird commonName;
     private String commonName;
