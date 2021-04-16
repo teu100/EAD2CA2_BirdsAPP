@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Bird implements Serializable {
 
     //public Bird commonName;
+    private int id;
     private String commonName;
     private String binomial;
     private String irishName;
@@ -25,6 +26,8 @@ public class Bird implements Serializable {
         return Bird;
     }
 
+    public int getID() {return id;}
+
     public String getCommonName(){
         return commonName;
     }
@@ -44,6 +47,20 @@ public class Bird implements Serializable {
     public String getFamilyName(){
         return familyName;
     }
+
+    public String getLiked()
+    {
+        String rtrnString ="";
+        if(liked != 0)
+        {
+            rtrnString = "Liked";
+        }
+        else
+        {
+            rtrnString = "..........";
+        }
+        return rtrnString;
+    };
 
     public String getInfoLink(){
         return infoLink;

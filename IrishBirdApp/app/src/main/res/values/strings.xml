@@ -14,5 +14,7 @@
     <string name="imgDescription">Picture of a bird</string>
     <string name="searchInitialText">Search .....</string>
     <string name="searchButtonLabel">Search</string>
-
+    <string name="likeUnlikeButtonLabel">Like/Unlike</string>
+    <string name="liked">Liked: </string>
+    <string name="infoLink"> Further Info: </string>
 </resources>
