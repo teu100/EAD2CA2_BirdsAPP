@@ -1,5 +1,6 @@
 package com.example.irishbirdapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,7 +13,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.net.CookieHandler;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 
 public class SecondFragment extends AppCompatActivity {
@@ -48,6 +54,10 @@ public class SecondFragment extends AppCompatActivity {
 
 
         ImageView birdImage = findViewById(R.id.birdImageFS);
+        String imageUri = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Rook_at_Slimbridge_Wetland_Centre%2C_Gloucestershire%2C_England_22May2019_arp.jpg/220px-Rook_at_Slimbridge_Wetland_Centre%2C_Gloucestershire%2C_England_22May2019_arp.jpg";
+        String shortLink = "https://en.wikipedia.org/wiki/Coal_tit#/media/File:Coal_tit_UK09.JPG";
+        Log.d(TAG, "Image Link: "+ bird.getImageLink());
+        Picasso.get().load(shortLink).into(birdImage);
    /*
         Drawable drawable;
         drawable = getResources().getDrawable(R.drawable.tryout);
@@ -59,9 +69,20 @@ public class SecondFragment extends AppCompatActivity {
         Glide.with(this)
                 .load("path")
                 .into(glideTry);
-*/
 
-        birdImage.setImageBitmap(BitmapFactory.decodeFile("https://www.flickr.com/photos/152270123@N05/51117646103/"));
+        URL url = null;
+
+        try {
+            url = new URL("https://www.flickr.com/photos/192803554@N06/51119001618/");
+            Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+            birdImage.setImageBitmap(bmp);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        */
+
+
+
 
 
 
