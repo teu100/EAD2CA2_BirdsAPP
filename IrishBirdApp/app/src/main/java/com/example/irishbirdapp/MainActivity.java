@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String RANDOM_BIRD_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds/randomBird";
     private String SEARCH_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds/search?searchTerm=";
+
     private static final String TAG = "Irish Bird App";
     public final static Bird REVIEW_MESSAGE=  new Bird();
     Button searchButton;
@@ -190,4 +191,9 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+
 }
+
+
+

@@ -119,13 +119,16 @@ namespace EAD2CA2_BirdAppAPI.Controllers
         [HttpGet]
         public ActionResult<string> GetRandom()
         {
+            // reference 
             try
             {
-                int tableRows = _dbContext.Birds.Count();
-                int randID = _random.Next(tableRows);
+                var allBirds = _dbContext.Birds.ToList();
 
-                var randomBirdToGet = _dbContext.Birds.Where(b => b.id == randID);
+                //int tableRows = _dbContext.Birds.Count();
+                //int randID = _random.Next(tableRows);
 
+                //var randomBirdToGet = _dbContext.Birds.Where(b => b.id == randID);
+                var randomBirdToGet = allBirds.ElementAt(_random.Next(0,allBirds.Count()));
                 return Ok(randomBirdToGet);
 
             }

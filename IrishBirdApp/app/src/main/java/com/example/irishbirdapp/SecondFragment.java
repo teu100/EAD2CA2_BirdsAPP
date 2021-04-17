@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,6 +29,7 @@ import java.io.IOException;
 import java.net.CookieHandler;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 
 public class SecondFragment extends AppCompatActivity {
@@ -35,9 +37,13 @@ public class SecondFragment extends AppCompatActivity {
     private final String TAG = "SecondFragment";
     private String LIKE_UNLIKE_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds/likeUnlike?id=";
     private String RANDOM_BIRD_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds/randomBird";
+    private String FAMILY_BIRDS_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/Birds/familyName?familyName=";
+    private String SEARCH_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds/search?searchTerm=";
+
+
     private int currentBirdID;
     public final static Bird REVIEW_MESSAGE=  new Bird();
-
+    private FamilyBird familyBirds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +83,8 @@ public class SecondFragment extends AppCompatActivity {
         //String shortLink = "https://en.wikipedia.org/wiki/Coal_tit#/media/File:Coal_tit_UK09.JPG";
         Log.d(TAG, "Image Link: "+ bird.getImageLink());
         Picasso.get().load(imageUri).into(birdImage);
+
+        this.familyBirds(bird.getFamilyName());
    /*
         Drawable drawable;
         drawable = getResources().getDrawable(R.drawable.tryout);
@@ -112,7 +120,189 @@ public class SecondFragment extends AppCompatActivity {
 
     }
 
+    public void familyBirds(String familyName){
+        final TextView outputBirds = (TextView) findViewById(R.id.outputTextView);
+        String searchUrl = FAMILY_BIRDS_URI+familyName;
 
+        try{
+            //making a string request
+            RequestQueue queue = Volley.newRequestQueue(SecondFragment.this);
+            Log.d(TAG, "Making request");
+            Log.d(TAG, searchUrl);
+            try{
+                StringRequest strObjRequest = new StringRequest(Request.Method.GET, searchUrl,
+                        new Response.Listener<String>()
+                        {
+                            @Override
+                            public void onResponse(String response)
+                            {
+                                Gson gson = new Gson();
+                                FamilyBird[] familyBirds = gson.fromJson(response, FamilyBird[].class);
+                                ArrayList<FamilyBird> notTheSameIDBirds = new ArrayList<FamilyBird>();
+                                for(int i =0; i< familyBirds.length; i++){//for every bird that I get from the api call
+                                    if(familyBirds[i].getID() != currentBirdID){//I am making sure that none of them is the same as the bird that is in display already
+                                        notTheSameIDBirds.add(familyBirds[i]);
+                                    }
+                                }
+                                if(notTheSameIDBirds.size() == 0){//if the list is = 0 then make the pictures & texts for family birds are set to invisible
+                                    TextView FBCName1 = findViewById(R.id.FBCName1);
+                                    TextView FBCName2 = findViewById(R.id.FBCName2);
+                                    ImageView FBPicture1 = findViewById(R.id.FBPicture1);
+                                    ImageView FBPicture2 = findViewById(R.id.FBPicture2);
+
+                                    FBCName1.setVisibility(View.INVISIBLE);
+                                    FBCName2.setVisibility(View.INVISIBLE);
+
+                                    FBPicture1.setVisibility(View.INVISIBLE);
+                                    FBPicture2.setVisibility(View.INVISIBLE);
+                                }
+                                else if(notTheSameIDBirds.size() == 1){//if the list is = 1 then make the picture & text for the second family bird invisible
+                                    TextView FBCName2 = findViewById(R.id.FBCName2);
+                                    ImageView FBPicture2 = findViewById(R.id.FBPicture2);
+                                    FBCName2.setVisibility(View.INVISIBLE);
+                                    FBPicture2.setVisibility(View.INVISIBLE);
+
+                                    TextView FBCName1 = findViewById(R.id.FBCName1);
+                                    ImageView FBPicture1 = findViewById(R.id.FBPicture1);
+                                    FBCName1.setText(notTheSameIDBirds.get(0).getCommonName());
+                                    String imageUri1 =  notTheSameIDBirds.get(0).getImageLink() ;
+                                    Picasso.get().load(imageUri1).into(FBPicture1);
+
+                                }
+                                else{
+                                    TextView FBCName1 = findViewById(R.id.FBCName1);
+                                    TextView FBCName2 = findViewById(R.id.FBCName2);
+
+                                    ImageView FBPicture1 = findViewById(R.id.FBPicture1);
+                                    ImageView FBPicture2 = findViewById(R.id.FBPicture2);
+
+                                    FBCName1.setText(notTheSameIDBirds.get(0).getCommonName());
+                                    FBCName2.setText(notTheSameIDBirds.get(1).getCommonName());
+
+                                    String imageUri1 = notTheSameIDBirds.get(0).getImageLink();
+                                    Picasso.get().load(imageUri1).into(FBPicture1);
+
+                                    String imageUri2 = notTheSameIDBirds.get(1).getImageLink();
+                                    Picasso.get().load(imageUri2).into(FBPicture2);
+                                }
+
+                            }
+                        },
+                        new Response.ErrorListener()
+                        {
+                            @Override
+                            public void onErrorResponse(VolleyError error)
+                            {
+                                Log.d(TAG, "onErrorResponse: ", error);
+
+                            }
+                        });
+                queue.add(strObjRequest);
+            }
+            catch(Exception e1) {
+                Log.d("Exception : ", e1.toString());
+
+            }
+        }
+        catch (Exception e2) {
+            Log.d("Exception 2", e2.toString());
+
+        }
+    }
+
+    //after all there was no need for this method
+    public void familyBirdInfo(ArrayList<FamilyBird> familyBird1){
+        if(familyBird1.size() == 1){
+            TextView FBCName1 = findViewById(R.id.FBCName1);
+            ImageView FBPicture1 = findViewById(R.id.FBPicture1);
+            FBCName1.setText(familyBird1.get(0).getCommonName());
+            String imageUri1 =  familyBird1.get(0).getImageLink() ;
+            Picasso.get().load(imageUri1).into(FBPicture1);
+        }else {
+            TextView FBCName1 = findViewById(R.id.FBCName1);
+            TextView FBCName2 = findViewById(R.id.FBCName2);
+
+            ImageView FBPicture1 = findViewById(R.id.FBPicture1);
+            ImageView FBPicture2 = findViewById(R.id.FBPicture2);
+
+            FBCName1.setText(familyBird1.get(0).getCommonName());
+            FBCName2.setText(familyBird1.get(1).getCommonName());
+
+            String imageUri1 = familyBird1.get(0).getImageLink();
+            Picasso.get().load(imageUri1).into(FBPicture1);
+
+            String imageUri2 = familyBird1.get(1).getImageLink();
+            Picasso.get().load(imageUri2).into(FBPicture2);
+        }
+
+    }
+
+
+    public void fB1Click(View view){
+        TextView FBCName1 = findViewById(R.id.FBCName1);
+        String birdName = FBCName1.getText().toString();
+        birdName = birdName.replace(" ", "%20");
+        Log.d( "fB1Click: ", birdName);
+        this.searchBirdbyImageCLick(birdName);
+
+    }
+
+    public void fB2Click(View view){
+        TextView FBCName2 = findViewById(R.id.FBCName2);
+        String birdName = FBCName2.getText().toString();
+        birdName = birdName.replace(" ", "%20");
+        Log.d( "fB2Click: ", birdName);
+        this.searchBirdbyImageCLick(birdName);
+
+    }
+
+    public void searchBirdbyImageCLick(String birdName){
+        String searchUrl = SEARCH_URI+birdName;
+
+        try{
+            //making a string request
+            RequestQueue queue = Volley.newRequestQueue(SecondFragment.this);
+            Log.d(TAG, "Making request");
+            Log.d("Bird name : ", birdName);
+            Log.d("Search url : ", searchUrl);
+            try{
+                StringRequest strObjRequest = new StringRequest(Request.Method.GET, searchUrl,
+                        new Response.Listener<String>()
+                        {
+                            @Override
+                            public void onResponse(String response)
+                            {
+                                Gson gson = new Gson();
+                                Bird bird = gson.fromJson(response, Bird.class);
+                                birdInfo(bird);
+
+                                Log.d(TAG, searchUrl);
+                                ImageView birdImage = findViewById(R.id.birdImageFS);
+                                String imageUri =  bird.getImageLink() ;
+                                Picasso.get().load(imageUri).into(birdImage);
+
+                            }
+                        },
+                        new Response.ErrorListener()
+                        {
+                            @Override
+                            public void onErrorResponse(VolleyError error)
+                            {
+
+                            }
+                        });
+                queue.add(strObjRequest);
+            }
+            catch(Exception e1) {
+                Log.d(TAG, e1.toString());
+
+            }
+        }
+        catch (Exception e2) {
+            Log.d(TAG, e2.toString());
+
+        }
+    }
 
     public void callService(View view){
 
@@ -156,12 +346,7 @@ public class SecondFragment extends AppCompatActivity {
         }
     }
 
-    public void linkCLick(){
-        TextView urlLink = (TextView) findViewById(R.id.infoLinkFS);
-        String urlString = urlLink.toString();
-        //urlLink.setOnClickListener(new View.OnClickListener(urlString));
 
-    }
     public void likeUnlikeBird(View view){
 
         final TextView outputBirds = (TextView) findViewById(R.id.outputTextView);
