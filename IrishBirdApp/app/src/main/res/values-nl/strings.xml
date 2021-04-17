@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Irish Bird App</string>
+    <string name="first_fragment_label">Vogels</string>
+    <string name="randomBird">"Willekeurige "</string>
+    <string name="welcomeText">Welkom bij de Irish Bird App</string>
+    <string name="discoverText">Ontdek een nieuwe vogel</string>
+    <string name="commonName">" Naam :"</string>
+    <string name="binomial">Binomiaal :</string>
+    <string name="irishName">Ierse Naam :</string>
+    <string name="orderName">Order:</string>
+    <string name="familyName">Familie:</string>
+    <string name="imgDescription">afbeelding van een vogel</string>
+    <string name="searchButtonLabel">Zoeken</string>
+    <string name="likeUnlikeButtonLabel">Leuk/Niet Leuk</string>
+    <string name="liked">Leuk gevonden:</string>
+    <string name="infoLink">Verdere informatie:</string>
+    <string name="otherFamilyBirds">" Vogels uit dezelfde familie."</string>
+    <string name="searchInitialText">Zoeken .....</string>
+</resources>

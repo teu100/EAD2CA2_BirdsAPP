@@ -122,13 +122,15 @@ namespace EAD2CA2_BirdAppAPI.Controllers
             // reference 
             try
             {
-                var allBirds = _dbContext.Birds.ToList();
+                //var allBirds = _dbContext.Birds.ToList();
 
-                //int tableRows = _dbContext.Birds.Count();
-                //int randID = _random.Next(tableRows);
+                int tableRows = _dbContext.Birds.Count();
+                int randID = _random.Next(1,tableRows+1);
 
-                //var randomBirdToGet = _dbContext.Birds.Where(b => b.id == randID);
-                var randomBirdToGet = allBirds.ElementAt(_random.Next(0,allBirds.Count()));
+                var randomBirdToGet = _dbContext.Birds.Where(b => b.id == randID);
+                //var randomBirdToGet = allBirds.ElementAt(_random.Next(0,allBirds.Count()));
+
+                
                 return Ok(randomBirdToGet);
 
             }
@@ -153,7 +155,7 @@ namespace EAD2CA2_BirdAppAPI.Controllers
             }
             catch
             {
-                return StatusCode(500, "Random Bird could not be found");
+                return StatusCode(500, "Liked Birds could not be found");
             }
         }
 
