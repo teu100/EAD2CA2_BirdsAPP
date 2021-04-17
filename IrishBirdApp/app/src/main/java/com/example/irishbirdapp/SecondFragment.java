@@ -156,6 +156,12 @@ public class SecondFragment extends AppCompatActivity {
         }
     }
 
+    public void linkCLick(){
+        TextView urlLink = (TextView) findViewById(R.id.infoLinkFS);
+        String urlString = urlLink.toString();
+        //urlLink.setOnClickListener(new View.OnClickListener(urlString));
+
+    }
     public void likeUnlikeBird(View view){
 
         final TextView outputBirds = (TextView) findViewById(R.id.outputTextView);
@@ -197,6 +203,7 @@ public class SecondFragment extends AppCompatActivity {
 
         }
     }
+
 
 
 }
