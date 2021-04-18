@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EAD2CA2_BirdAppAPI.Models;
+﻿using EAD2CA2_BirdAppAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace EAD2CA2_BirdAppAPI

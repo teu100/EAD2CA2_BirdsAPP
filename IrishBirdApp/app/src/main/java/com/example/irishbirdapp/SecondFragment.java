@@ -85,28 +85,7 @@ public class SecondFragment extends AppCompatActivity {
         Picasso.get().load(imageUri).into(birdImage);
 
         this.familyBirds(bird.getFamilyName());
-   /*
-        Drawable drawable;
-        drawable = getResources().getDrawable(R.drawable.tryout);
-        birdImage.setImageDrawable(drawable);
 
-        ImageView glideTry = findViewById(R.id.birdImageFS);
-        String path = "https://www.flickr.com/photos/152270123@N05/51117646103/";
-        Log.d(TAG,path);
-        Glide.with(this)
-                .load("path")
-                .into(glideTry);
-
-        URL url = null;
-
-        try {
-            url = new URL("https://www.flickr.com/photos/192803554@N06/51119001618/");
-            Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-            birdImage.setImageBitmap(bmp);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
     }
 
     public void birdInfo(Bird bird){
