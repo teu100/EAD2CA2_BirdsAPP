@@ -1,55 +1,28 @@
 package com.example.irishbirdapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.SearchManager;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.StrictMode;
-import android.util.Log;
-import android.view.MenuInflater;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.SearchView;
-import android.widget.TextView;
-
-
-import com.google.android.material.snackbar.Snackbar;
-import com.google.gson.Gson;
 
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.View;
 
 import android.widget.TextView;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.gson.*;
 import com.android.volley.*;
 import com.android.volley.toolbox.*;
 import com.example.irishbirdapp.*;
 
-
-import org.json.JSONArray;
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.Random;
-
 public class MainActivity extends AppCompatActivity {
 
-    private String RANDOM_BIRD_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds/randomBird";
-    private String SEARCH_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds/search?searchTerm=";
+    private final String RANDOM_BIRD_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds/randomBird";
+    private final String SEARCH_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds/search?searchTerm=";
 
     private static final String TAG = "Irish Bird App";
     public final static Bird REVIEW_MESSAGE=  new Bird();
@@ -61,14 +34,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        searchButton = (Button)findViewById(R.id.searchButton);
+        searchButton = findViewById(R.id.searchButton);
 
     }
 
     public void searchForABird(View view)
     {
-        final TextView outputBirds = (TextView) findViewById(R.id.outputTextView);
-                searchText = (EditText)findViewById(R.id.searchTextBox);
+        final TextView outputBirds = findViewById(R.id.outputTextView);
+                searchText = findViewById(R.id.searchTextBox);
                 String searchTerm = searchText.getText().toString();
                 String searchUrl = SEARCH_URI+searchTerm;
 
@@ -152,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void callService(View view){
 
-        final TextView outputBirds = (TextView) findViewById(R.id.outputTextView);
+        final TextView outputBirds = findViewById(R.id.outputTextView);
         try{
             //making a string request
             RequestQueue queue = Volley.newRequestQueue(this);

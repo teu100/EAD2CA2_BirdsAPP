@@ -1,15 +1,9 @@
 package com.example.irishbirdapp;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,20 +19,16 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.net.CookieHandler;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 
 public class SecondFragment extends AppCompatActivity {
 
     private final String TAG = "SecondFragment";
-    private String LIKE_UNLIKE_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds/likeUnlike?id=";
-    private String RANDOM_BIRD_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds/randomBird";
-    private String FAMILY_BIRDS_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/Birds/familyName?familyName=";
-    private String SEARCH_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds/search?searchTerm=";
+    private final String LIKE_UNLIKE_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds/likeUnlike?id=";
+    private final String RANDOM_BIRD_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds/randomBird";
+    private final String FAMILY_BIRDS_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/Birds/familyName?familyName=";
+    private final String SEARCH_URI = "https://ead2ca2birdappapi20210409142733.azurewebsites.net/api/birds/search?searchTerm=";
 
 
     private int currentBirdID;
@@ -100,7 +90,7 @@ public class SecondFragment extends AppCompatActivity {
     }
 
     public void familyBirds(String familyName){
-        final TextView outputBirds = (TextView) findViewById(R.id.outputTextView);
+        final TextView outputBirds = findViewById(R.id.outputTextView);
         String searchUrl = FAMILY_BIRDS_URI+familyName;
 
         try{
@@ -285,7 +275,6 @@ public class SecondFragment extends AppCompatActivity {
 
     public void callService(View view){
 
-        final TextView outputBirds = (TextView) findViewById(R.id.outputTextView);
         try{
             //making a string request
             RequestQueue queue = Volley.newRequestQueue(this);
@@ -328,8 +317,8 @@ public class SecondFragment extends AppCompatActivity {
 
     public void likeUnlikeBird(View view){
 
-        final TextView outputBirds = (TextView) findViewById(R.id.outputTextView);
-        String likeUnlikeURI = LIKE_UNLIKE_URI+String.valueOf(currentBirdID);
+        final TextView outputBirds = findViewById(R.id.outputTextView);
+        String likeUnlikeURI = LIKE_UNLIKE_URI+ currentBirdID;
         try{
             //making a string request
             RequestQueue queue = Volley.newRequestQueue(this);

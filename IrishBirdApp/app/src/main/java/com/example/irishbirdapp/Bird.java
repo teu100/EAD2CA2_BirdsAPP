@@ -60,7 +60,7 @@ public class Bird implements Serializable {
             rtrnString = "..........";
         }
         return rtrnString;
-    };
+    }
 
     public String getInfoLink(){
         return infoLink;

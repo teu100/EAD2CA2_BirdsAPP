@@ -19,8 +19,10 @@ import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
@@ -43,25 +45,29 @@ public class RandomBirdTest {
                         isDisplayed()));
         materialButton.perform(click());
 
-        ViewInteraction materialButton2 = onView(
-                allOf(withId(R.id.RandomBirdSFbutton), withText("Random Bird"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                12),
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.textView3), withText("Binomial:"),
+                        withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
-        materialButton2.perform(click());
+        textView.check(matches(withText("Binomial:")));
 
-        ViewInteraction materialButton3 = onView(
-                allOf(withId(R.id.RandomBirdSFbutton), withText("Random Bird"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                12),
+        ViewInteraction textView2 = onView(
+                allOf(withId(R.id.textView5), withText("Order :"),
+                        withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
-        materialButton3.perform(click());
+        textView2.check(matches(withText("Order :")));
+
+        ViewInteraction textView3 = onView(
+                allOf(withId(R.id.textView7), withText("Liked:"),
+                        withParent(withParent(withId(android.R.id.content))),
+                        isDisplayed()));
+        textView3.check(matches(withText("Liked:")));
+
+        ViewInteraction textView4 = onView(
+                allOf(withId(R.id.textView9), withText("Further Info:"),
+                        withParent(withParent(withId(android.R.id.content))),
+                        isDisplayed()));
+        textView4.check(matches(withText("Further Info:")));
     }
 
     private static Matcher<View> childAtPosition(
