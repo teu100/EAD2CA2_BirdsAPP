@@ -17,4 +17,5 @@
     <string name="infoLink">Verdere informatie:</string>
     <string name="otherFamilyBirds">" Vogels uit dezelfde familie."</string>
     <string name="searchInitialText">Zoeken .....</string>
+    <string name="noFamilyBirds">Geen familievogel gevonden</string>
 </resources>

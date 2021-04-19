@@ -116,19 +116,26 @@ public class SecondFragment extends AppCompatActivity {
                                 if(notTheSameIDBirds.size() == 0){//if the list is = 0 then make the pictures & texts for family birds are set to invisible
                                     TextView FBCName1 = findViewById(R.id.FBCName1);
                                     TextView FBCName2 = findViewById(R.id.FBCName2);
+                                    TextView familyHeading = findViewById(R.id.familyHeading);
+
                                     ImageView FBPicture1 = findViewById(R.id.FBPicture1);
                                     ImageView FBPicture2 = findViewById(R.id.FBPicture2);
 
                                     FBCName1.setVisibility(View.INVISIBLE);
                                     FBCName2.setVisibility(View.INVISIBLE);
+                                    familyHeading.setVisibility(View.INVISIBLE);
 
                                     FBPicture1.setVisibility(View.INVISIBLE);
                                     FBPicture2.setVisibility(View.INVISIBLE);
                                 }
                                 else if(notTheSameIDBirds.size() == 1){//if the list is = 1 then make the picture & text for the second family bird invisible
                                     TextView FBCName2 = findViewById(R.id.FBCName2);
+                                    TextView noFamilyBirds = findViewById(R.id.noFamilyBird);
+
                                     ImageView FBPicture2 = findViewById(R.id.FBPicture2);
+
                                     FBCName2.setVisibility(View.INVISIBLE);
+                                    noFamilyBirds.setVisibility(View.INVISIBLE);
                                     FBPicture2.setVisibility(View.INVISIBLE);
 
                                     TextView FBCName1 = findViewById(R.id.FBCName1);
@@ -139,8 +146,12 @@ public class SecondFragment extends AppCompatActivity {
 
                                 }
                                 else{
+                                    TextView noFamilyBirds = findViewById(R.id.noFamilyBird);
+                                    noFamilyBirds.setVisibility(View.INVISIBLE);
+
                                     TextView FBCName1 = findViewById(R.id.FBCName1);
                                     TextView FBCName2 = findViewById(R.id.FBCName2);
+
 
                                     ImageView FBPicture1 = findViewById(R.id.FBPicture1);
                                     ImageView FBPicture2 = findViewById(R.id.FBPicture2);
